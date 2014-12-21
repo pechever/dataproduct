@@ -1,0 +1,65 @@
+---
+title       : Iris
+subtitle    : About Variables using Iris Data Frame
+author      : pecheverr
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+
+--- 
+## Summary Iris 
+
+
+```{r, echo=FALSE}
+summary(iris)
+```
+
+---
+## Plot
+
+```{r, echo=FALSE}
+plot(iris)
+```
+
+---
+## Plot Kmean
+
+```{r, echo=FALSE}
+iris_kmean=kmeans(iris[,1:4],3)
+plot(iris,col=iris_kmean$cluster)
+
+
+
+```
+
+---
+## Boxplot about Iris by Species
+
+```{r, echo=FALSE}
+d=iris
+par(mfrow=c(2,2))
+boxplot(d[,1]~d[,5], main="Sepal Length by Cluters")
+boxplot(d[,2]~d[,5], main="Sepal Width by Cluters")
+boxplot(d[,3]~d[,5] , main="Petal Length by Cluters")
+boxplot(d[,4]~d[,5], main="Petal Width by Cluters")
+
+```
+
+---
+## Boxplot about Iris by Clusters
+
+```{r, echo=FALSE}
+iris_kmean=kmeans(iris[,1:4],3)
+d=data.frame(iris,iris_kmean$cluster)
+par(mfrow=c(2,2))
+boxplot(d[,1]~d[,6], main="Sepal Length by Cluters")
+boxplot(d[,2]~d[,6], main="Sepal Width by Cluters")
+boxplot(d[,3]~d[,6] , main="Petal Length by Cluters")
+boxplot(d[,4]~d[,6], main="Petal Width by Cluters")
+
+```
+
